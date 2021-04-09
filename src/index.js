@@ -1,26 +1,13 @@
-document.addEventListener("DOMContentLoaded", (e) => {
+const ul = document.getElementById('tasks')
+const form = document.getElementById('create-task-form')
 
-  const task = document.getElementById("create-task-form")
-  const list = document.getElementById("tasks")
+form.addEventListener(`submit`, (e)=>{
+  e.preventDefault()
+  const capturesText = e.target[0].value
+  const createLi = document.createElement("li")
   
-  task.addEventListener("submit", (e)=>{
-    e.preventDefault()
-    
-    document.createElement(`list`)
-    
-    const addElement = () => {
+  createLi.innerHTML = capturesText
 
-      const text = e.target[0].value
-      const grabLi = document.createElement("li");
-      const newLi = grabLi.innerHTML
-
-      list.appendChild(grabLi)
-      
-      grabLi.innerHTML = text
-
-      return newLi
-    }   
-    return addElement()
-  })
-  
-});
+  ul.appendChild(createLi)
+  e.target.reset();
+})
